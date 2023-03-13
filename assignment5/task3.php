@@ -12,9 +12,9 @@
     <h2>User Forms</h2>
     <form action="action.php" method="post">
         <label for="name">Name:</label><br>
-        <input type="text" name="name" placeholder="Type your name" required><br><br>
+        <input type="text" name="name" placeholder="type your name" required><br><br>
         <label for="email">Email:</label><br>
-        <input type="email" name="email" placeholder="Type your email" required><br><br>
+        <input type="email" name="email" placeholder="type your email" required><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>
