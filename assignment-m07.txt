@@ -1,3 +1,5 @@
+<- Assignment Name: SQL Commands Assignment ->
+
 ## - I Used the employees table to answer the following questions:
 
 a. The command is retrieving all data from the employees table, which may include information about the employee name, ID, location, or other attributes, depending on the table's structure.
