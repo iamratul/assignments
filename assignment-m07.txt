@@ -1,0 +1,44 @@
+## - I Used the employees table to answer the following questions:
+
+a. The command is retrieving all data from the employees table, which may include information about the employee name, ID, location, or other attributes, depending on the table's structure.
+
+SELECT * FROM employees;
+
+b. This SQL query retrieves the name and salary columns of all employees whose salary is greater than 50000 from the employees table.
+
+SELECT name, salary FROM employees WHERE salary > 50000;
+
+c. This SQL query calculates the average salary of all employees in the employees table and returns it as a single result.
+
+SELECT AVG(salary) FROM employees;
+
+d. This command is selecting a subset of data from two tables based on a condition, and then performing an aggregation function (count) on a specific column to return a single value: the number of employees who work in the Marketing department.
+
+SELECT COUNT(employees.id) FROM employees JOIN departments WHERE departments.name = 'Marketing';
+
+e. This command is modifying an existing record in the employees table by changing the salary value for a specific employee with the id of 1001.the command is modifying an existing record in the employees table by changing the salary value for a specific employee with the id of 1001.
+
+UPDATE employees SET salary = 60000 WHERE id = 1001;
+
+f. the command is deleting one or more records from the employees table that meet the specified condition of having a salary value less than 30000.
+
+DELETE FROM employees WHERE salary < 30000;
+ 
+
+## - I Used the departments table to answer the following questions:
+
+a. The command is retrieving all data from the departments table, which may include information about the department's name, ID, location, or other attributes, depending on the table's structure.
+
+SELECT * FROM departments;
+
+b. The command is retrieving data from the departments table for departments where the name is 'Finance'. Specifically, it is selecting the name and manager columns for these departments, which may include the name of the department and the name of the manager responsible for the department.
+
+SELECT name, manager FROM departments WHERE name = 'Finance';
+
+c. The command is retrieving data from the employees and departments tables and counting the number of employees in each department.
+
+SELECT COUNT(employees.id) as Total, departments.name FROM employees RIGHT JOIN departments ON employees.department_id = departments.id GROUP BY departments.name;
+
+d. The SQL command is to insert a new row of data into the "departments" table, specifically in the "name" and "manager" columns, with the values "Research" and "John Doe", respectively.
+
+INSERT INTO departments (name, manager) VALUES ("Research", "John Doe");
