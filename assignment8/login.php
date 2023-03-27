@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -61,8 +64,9 @@
                         // If there are no errors, redirect to welcome page
                         if (empty($errors)) {
                             // User exists, redirect to welcome page
-                            header("Location: welcome.php?email=$email");
-                            exit;
+                            $_SESSION['email'] = $email;
+                            header("Location: welcome.php");
+                            exit();
                         } else {
                             // Invalid login credentials
                             $errors[] = "Invalid email address or password.";
