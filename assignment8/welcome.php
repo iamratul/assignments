@@ -1,6 +1,12 @@
 <?php
 // Get user email for display
-$email = $_GET['email'];
+session_start();
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+} else {
+    header("Location: index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +36,11 @@ $email = $_GET['email'];
         <div class="row">
             <div class="column">
                 <div class="box">
-                    <a href="index.php">Home</a>
+                    <a href="logout.php">Logout</a>
                     <blockquote>
                         <p><em>Welcome! <b><?php echo $email; ?></b></em></p>
                     </blockquote>
+                    <p>You have successfully logged in.</p>
                 </div>
             </div>
         </div>
