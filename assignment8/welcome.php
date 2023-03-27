@@ -30,7 +30,7 @@ $email = $_GET['email'];
         <div class="row">
             <div class="column">
                 <div class="box">
-                    <a href="login.php">Logout</a>
+                    <a href="index.php">Home</a>
                     <blockquote>
                         <p><em>Welcome! <b><?php echo $email; ?></b></em></p>
                     </blockquote>
