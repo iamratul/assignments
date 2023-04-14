@@ -61,33 +61,62 @@
         </div>
     </header>
 
-    <!-- Breadcumb -->
-    <section class="breadcumb-area" style="background-image: url('assets/img/cta.jpg');">
+    <!-- Breadcrumb Area -->
+    <section class="breadcrumb-area" style="background-image: url('assets/img/cta.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-xxl-12 text-center">
                     <h2>Blogs</h2>
-                    <ul class="d-flex justify-content-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li> / </li>
-                        <li>Blogs</li>
-                    </ul>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb d-flex justify-content-center">
+                          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                        </ol>
+                      </nav>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blogs -->
+    <!-- Blogs Area -->
     <section class="blogs-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="single-blog mb-5">
                         <div class="blog-img">
-                            <img src="assets/img/blog-1.jpg" alt="Blog post title goes here">
+                            <img src="assets/img/blog-1.jpg" class="w-100" alt="Blog Image">
                         </div>
                         <div class="blog-desc p-4">
-                            <h2>
+                            <h2 class="mb-2">
+                                <a href="post.html">Lorem ipsum dolor sit amet adipisicing elit.</a>
+                            </h2>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolor eligendi sapiente
+                                deleniti repellat perferendis tenetur adipisci nemo aut iusto exercitationem dicta neque
+                                reprehenderit consectetur, quis illum voluptates ipsa laborum hic natus iure? Nesciunt
+                                ex voluptate corrupti debitis odio, et officiis dignissimos quia illum deserunt,
+                                explicabo, adipisci velit. Sed, vero.
+                            </p>
+                        </div>
+                        <div class="blog-meta d-flex justify-content-between p-4">
+                            <div class="blog-meta-left">
+                                <a href=""><i class="fa-solid fa-user"></i> Jhon Doe</a>
+                                <a href=""><i class="fa-solid fa-calendar-days"></i> April 12, 2023</a>
+                                <a href=""><i class="fa-solid fa-comments"></i> 4 Comments</a>
+                                <a href=""><i class="fa-solid fa-share-nodes"></i> Share this</a>
+                            </div>
+                            <div class="blog-meta-btn">
+                                <a href="post.html">Read More <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-blog mb-5">
+                        <div class="blog-img">
+                            <img src="assets/img/blog-2.jpg" class="w-100" alt="Blog Image">
+                        </div>
+                        <div class="blog-desc p-4">
+                            <h2 class="mb-2">
                                 <a href="post.html">Lorem ipsum dolor sit amet adipisicing elit.</a>
                             </h2>
                             <p>
@@ -112,10 +141,10 @@
                     </div>
                     <div class="single-blog mb-5">
                         <div class="blog-img">
-                            <img src="assets/img/blog-2.jpg" alt="Blog post title goes here">
+                            <img src="assets/img/blog-3.jpg" class="w-100" alt="Blog Image">
                         </div>
                         <div class="blog-desc p-4">
-                            <h2>
+                            <h2 class="mb-2">
                                 <a href="post.html">Lorem ipsum dolor sit amet adipisicing elit.</a>
                             </h2>
                             <p>
@@ -140,10 +169,10 @@
                     </div>
                     <div class="single-blog mb-5">
                         <div class="blog-img">
-                            <img src="assets/img/blog-3.jpg" alt="Blog post title goes here">
+                            <img src="assets/img/blog-4.jpg" class="w-100" alt="Blog Image">
                         </div>
                         <div class="blog-desc p-4">
-                            <h2>
+                            <h2 class="mb-2">
                                 <a href="post.html">Lorem ipsum dolor sit amet adipisicing elit.</a>
                             </h2>
                             <p>
@@ -166,36 +195,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="single-blog mb-5">
-                        <div class="blog-img">
-                            <img src="assets/img/blog-4.jpg" alt="Blog post title goes here">
-                        </div>
-                        <div class="blog-desc p-4">
-                            <h2>
-                                <a href="post.html">Lorem ipsum dolor sit amet adipisicing elit.</a>
-                            </h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolor eligendi sapiente
-                                deleniti repellat perferendis tenetur adipisci nemo aut iusto exercitationem dicta neque
-                                reprehenderit consectetur, quis illum voluptates ipsa laborum hic natus iure? Nesciunt
-                                ex voluptate corrupti debitis odio, et officiis dignissimos quia illum deserunt,
-                                explicabo, adipisci velit. Sed, vero.
-                            </p>
-                        </div>
-                        <div class="blog-meta d-flex justify-content-between p-4">
-                            <div class="blog-meta-left">
-                                <a href=""><i class="fa-solid fa-user"></i> Jhon Doe</a>
-                                <a href=""><i class="fa-solid fa-calendar-days"></i> April 12, 2023</a>
-                                <a href=""><i class="fa-solid fa-comments"></i> 4 Comment’s</a>
-                                <a href=""><i class="fa-solid fa-share-nodes"></i> Share this</a>
-                            </div>
-                            <div class="blog-meta-btn">
-                                <a href="post.html">Read More <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
+                    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                        <ul class="pagination p-2 rounded-2">
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
@@ -214,48 +215,48 @@
                 </div>
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <div class="single-sidebar mb-5">
-                        <div class="sidebar-title">
+                        <div class="sidebar-title mb-3">
                             <h4>Subscribe</h4>
                         </div>
                         <form action="#">
                             <p>Subscribe to upate news from us</p>
-                            <input type="email" placeholder="Enter your email">
+                            <input type="email" class="form-control w-100 p-3" placeholder="enter your email">
                             <button>
                                 <i class="fa-solid fa-envelope"></i>
                             </button>
                         </form>
                     </div>
                     <div class="single-sidebar mb-5">
-                        <div class="sidebar-title">
+                        <div class="sidebar-title mb-3">
                             <h4>Most Popular</h4>
                         </div>
-                        <div class="d-flex blog-list">
+                        <div class="d-flex blog-list mb-4">
                             <div class="flex-shrink-0">
-                                <img src="assets/img/post-thumb-1.jpg" alt="Post title goes here">
+                                <img src="assets/img/post-thumb-1.jpg" alt="Blog Image">
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5><a href="post.html">Lessons Learned From A First-Time Appreneur</a></h5>
                             </div>
                         </div>
-                        <div class="d-flex blog-list">
+                        <div class="d-flex blog-list mb-4">
                             <div class="flex-shrink-0">
-                                <img src="assets/img/post-thumb-2.jpg" alt="Post title goes here">
+                                <img src="assets/img/post-thumb-2.jpg" alt="Blog Image">
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5><a href="post.html">What TV Shows Are You Watching?</a></h5>
                             </div>
                         </div>
-                        <div class="d-flex blog-list">
+                        <div class="d-flex blog-list mb-4">
                             <div class="flex-shrink-0">
-                                <img src="assets/img/post-thumb-3.jpg" alt="Post title goes here">
+                                <img src="assets/img/post-thumb-3.jpg" alt="Blog Image">
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5><a href="post.html">How Not to Get Blisters From Shoes</a></h5>
                             </div>
                         </div>
-                        <div class="d-flex blog-list">
+                        <div class="d-flex blog-list mb-4">
                             <div class="flex-shrink-0">
-                                <img src="assets/img/post-thumb-4.jpg" alt="Post title goes here">
+                                <img src="assets/img/post-thumb-4.jpg" alt="Blog Image">
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5><a href="post.html">What Food Geniuses Eat for Lunch</a></h5>
@@ -263,7 +264,7 @@
                         </div>
                     </div>
                     <div class="single-sidebar">
-                        <div class="sidebar-title">
+                        <div class="sidebar-title mb-3">
                             <h4>Category</h4>
                         </div>
                         <div class="category">
@@ -284,9 +285,9 @@
     <section class="footer-top-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <div class="col-xl-3 col-md-6 mb-5 mb-xl-0">
                     <div class="footer-top-title">
-                        <h4>Contact Info</h4>
+                        <h5>Contact Info</h5>
                     </div>
                     <ul class="footer-top-info">
                         <li>Burhan Shah Road, Karbala, <br>
@@ -301,9 +302,9 @@
                         <a href="" class="tw"><i class="fa-brands fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                <div class="col-xl-2 col-md-6 mb-5 mb-xl-0">
                     <div class="footer-top-title">
-                        <h4>Useful Links</h4>
+                        <h5>Useful Links</h5>
                     </div>
                     <ul>
                         <li><a href="">About Us</a></li>
@@ -311,31 +312,31 @@
                         <li><a href="">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <div class="col-xl-4 col-md-6 mb-5 mb-xl-0">
                     <div class="footer-top-title">
-                        <h4>Lastest News</h4>
+                        <h5>Lastest News</h5>
                     </div>
                     <div class="footer-top-blog d-flex align-items-center">
-                        <img src="assets/img/blog.png" alt="">
+                        <img src="assets/img/blog.png" alt="Blog Image">
                         <h2>
-                            <a href="">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
+                            <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
                         </h2>
                     </div>
                     <div class="footer-top-blog d-flex align-items-center">
-                        <img src="assets/img/blog.png" alt="">
+                        <img src="assets/img/blog.png" alt="Blog Image">
                         <h2>
-                            <a href="">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
+                            <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
                         </h2>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-md-6">
                     <div class="footer-top-title">
-                        <h4>Subscribe</h4>
+                        <h5>Subscribe</h5>
                     </div>
-                    <p>Subscribe to our weekly newsletter to receive the lastest freebies in your inbox</p>
+                    <p class="mb-2">Subscribe to our weekly newsletter to receive the lastest freebies in your inbox</p>
                     <form action="#">
-                        <input type="email" placeholder="Your Address Email">
-                        <input type="submit" value="subscribe">
+                        <input type="email" class="form-control w-100 p-3" placeholder="your email address">
+                        <input type="submit" class="form-control w-100 p-3" value="subscribe">
                     </form>
                 </div>
             </div>
