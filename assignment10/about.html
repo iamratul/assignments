@@ -61,17 +61,18 @@
         </div>
     </header>
 
-    <!-- Breadcumb -->
-    <section class="breadcumb-area" style="background-image: url('assets/img/cta.jpg');">
+    <!-- Breadcrumb Area -->
+    <section class="breadcrumb-area" style="background-image: url('assets/img/cta.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>About Us</h2>
-                    <ul class="d-flex justify-content-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li> / </li>
-                        <li>About</li>
-                    </ul>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb d-flex justify-content-center">
+                          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">About</li>
+                        </ol>
+                      </nav>
                 </div>
             </div>
         </div>
@@ -81,8 +82,14 @@
     <section class="about-area">
         <div class="container">
             <div class="row">
+                <div class="col-12 mb-3">
+                    <div class="section-title">
+                        <h2>About Us</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-6">
-                    <h2>About Us</h2>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, adipisci ullam dicta ducimus
                         nesciunt impedit culpa reiciendis quibusdam blanditiis odio laudantium odit earum atque
@@ -101,9 +108,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6 mt-5 mt-lg-0">
-                    <div class="about-video w-100">
-                        <iframe src="https://www.youtube.com/embed/Y_k45U8H-70" frameborder="0"></iframe>
-                    </div>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                      </div>
                 </div>
             </div>
         </div>
@@ -141,7 +148,7 @@
         </div>
     </section>
 
-    <!-- Team Area -->
+    <!-- Teams Area -->
     <section class="teams-area">
         <div class="container">
             <div class="row">
@@ -155,11 +162,11 @@
                 <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
                     <div class="single-team">
                         <div class="team-img">
-                            <img src="assets/img/team-1.jpg" alt="Team Image">
+                            <img src="assets/img/team-1.jpg" class="w-100" alt="Team Image">
                         </div>
                         <div class="team-desc text-center pb-3">
-                            <h4>Jhon Doe</h4>
-                            <p>Senior Developer</p>
+                            <h4 class="mt-3">Jhon Doe</h4>
+                            <p class="mb-2">Senior Developer</p>
                             <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                             <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href=""><i class="fa-brands fa-twitter"></i></a>
@@ -170,11 +177,11 @@
                 <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
                     <div class="single-team">
                         <div class="team-img">
-                            <img src="assets/img/team-2.jpg" alt="Team Image">
+                            <img src="assets/img/team-2.jpg" class="w-100" alt="Team Image">
                         </div>
                         <div class="team-desc text-center pb-3">
-                            <h4>Jui Doe</h4>
-                            <p>Senior Designer</p>
+                            <h4 class="mt-3">Jui Doe</h4>
+                            <p class="mb-2">Senior Designer</p>
                             <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                             <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href=""><i class="fa-brands fa-twitter"></i></a>
@@ -185,11 +192,11 @@
                 <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
                     <div class="single-team">
                         <div class="team-img">
-                            <img src="assets/img/team-3.jpg" alt="Team Image">
+                            <img src="assets/img/team-3.jpg" class="w-100" alt="Team Image">
                         </div>
                         <div class="team-desc text-center pb-3">
-                            <h4>Mak Doe</h4>
-                            <p>Product Designer</p>
+                            <h4 class="mt-3">Mak Doe</h4>
+                            <p class="mb-2">Product Designer</p>
                             <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                             <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href=""><i class="fa-brands fa-twitter"></i></a>
@@ -200,11 +207,11 @@
                 <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
                     <div class="single-team">
                         <div class="team-img">
-                            <img src="assets/img/team-4.jpg" alt="Team Image">
+                            <img src="assets/img/team-4.jpg" class="w-100" alt="Team Image">
                         </div>
                         <div class="team-desc text-center pb-3">
-                            <h4>Mui Doe</h4>
-                            <p>Junior Developer</p>
+                            <h4 class="mt-3">Mui Doe</h4>
+                            <p class="mb-2">Junior Developer</p>
                             <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                             <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href=""><i class="fa-brands fa-twitter"></i></a>
@@ -337,9 +344,9 @@
     <section class="footer-top-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <div class="col-xl-3 col-md-6 mb-5 mb-xl-0">
                     <div class="footer-top-title">
-                        <h4>Contact Info</h4>
+                        <h5>Contact Info</h5>
                     </div>
                     <ul class="footer-top-info">
                         <li>Burhan Shah Road, Karbala, <br>
@@ -354,9 +361,9 @@
                         <a href="" class="tw"><i class="fa-brands fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                <div class="col-xl-2 col-md-6 mb-5 mb-xl-0">
                     <div class="footer-top-title">
-                        <h4>Useful Links</h4>
+                        <h5>Useful Links</h5>
                     </div>
                     <ul>
                         <li><a href="">About Us</a></li>
@@ -364,31 +371,31 @@
                         <li><a href="">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <div class="col-xl-4 col-md-6 mb-5 mb-xl-0">
                     <div class="footer-top-title">
-                        <h4>Lastest News</h4>
+                        <h5>Lastest News</h5>
                     </div>
                     <div class="footer-top-blog d-flex align-items-center">
-                        <img src="assets/img/blog.png" alt="">
+                        <img src="assets/img/blog.png" alt="Blog Image">
                         <h2>
-                            <a href="">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
+                            <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
                         </h2>
                     </div>
                     <div class="footer-top-blog d-flex align-items-center">
-                        <img src="assets/img/blog.png" alt="">
+                        <img src="assets/img/blog.png" alt="Blog Image">
                         <h2>
-                            <a href="">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
+                            <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
                         </h2>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-md-6">
                     <div class="footer-top-title">
-                        <h4>Subscribe</h4>
+                        <h5>Subscribe</h5>
                     </div>
-                    <p>Subscribe to our weekly newsletter to receive the lastest freebies in your inbox</p>
+                    <p class="mb-2">Subscribe to our weekly newsletter to receive the lastest freebies in your inbox</p>
                     <form action="#">
-                        <input type="email" placeholder="Your Address Email">
-                        <input type="submit" value="subscribe">
+                        <input type="email" class="form-control w-100 p-3" placeholder="your email address">
+                        <input type="submit" class="form-control w-100 p-3" value="subscribe">
                     </form>
                 </div>
             </div>
