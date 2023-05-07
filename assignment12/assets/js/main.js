@@ -21,7 +21,6 @@ const bmiResult = () => {
     result.innerText = bmiCalculate.toFixed(1);
 
     // Display Message
-    // const message = '';
     if(bmiCalculate<18.5){
         bmiMessage.innerHTML = '<div class="alert alert-warning" role="alert">Opps! You are <b>Underweight!</b></div>';
     } else if(bmiCalculate>18.5 && bmiCalculate<=24.9){
@@ -31,6 +30,5 @@ const bmiResult = () => {
     } else if(bmiCalculate>29.9){
         bmiMessage.innerHTML = '<div class="alert alert-danger" role="alert">You need to contact a nutritionist immediately.</div>';
     }
-    // bmiMessage.innerText = message;
 }
 calculateBtn.addEventListener('click', bmiResult);
