@@ -13,10 +13,18 @@ const bmiResult = () => {
 
     const bmiheightData = heightInput.value;
     const bmiheight = parseFloat(bmiheightData);
-    const squareHeight = bmiheight * bmiheight;
     // heightInput.value='';
 
+    // Validate Data
+    if (isNaN(bmiWeight) || isNaN(bmiHeight) || bmiWeight <= 0 || bmiHeight <= 0) {
+        // Display error message if input is invalid
+        bmiMessage.innerHTML = '<div class="alert alert-danger" role="alert">Please enter valid weight and height values.</div>';
+        // result.innerText = '';
+        return;
+    }
+
     // Calculating Data
+    const squareHeight = bmiheight * bmiheight;
     const bmiCalculate = (bmiWeight / squareHeight) * 703;
     result.innerText = bmiCalculate.toFixed(1);
 
