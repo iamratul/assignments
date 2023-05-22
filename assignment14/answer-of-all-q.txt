@@ -1,0 +1,71 @@
+Answer to the question no 1:
+
+function StoreData(Request $request)
+    {
+        $name = $request->input('name');
+        return response('Data submitted successfully!');
+    }
+
+Answer to the question no 2:
+
+function HeaderData(Request $request)
+    {
+        $userAgent = $request->header('User-Agent');
+        return response('Request processed successfully!');
+    }
+
+Answer to the question no 3:
+
+function ApiEndPoint(Request $request)
+    {
+        $page = $request->query('page', null);
+    }
+
+Answer to the question no 4:
+
+function JsonDataResponse()
+    {
+        $data = [
+            'message' => 'Success',
+            'data' => [
+                'name' => 'John Doe',
+                'age' => 25,
+            ],
+        ];
+
+        return response()->json($data);
+    }
+
+Answer to the question no 5:
+
+function uploadAvatar(Request $request)
+    {
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $filename = $file->getClientOriginalName();
+            $path = $file->move(public_path('uploads'), $filename);
+            return response('File uploaded successfully!');
+        }
+
+        return response('No file provided!', 400);
+    }
+
+Answer to the question no 6:
+
+function RetrieveCookie(Request $request)
+    {
+        $rememberToken = $request->cookie('remember_token', null);
+        return response('Request processed successfully!');
+    }
+
+Answer to the question no 7:
+
+Route::post('/submit', function (Request $request) {
+    $email = $request->input('email');
+    $response = [
+        'success' => true,
+        'message' => 'Form submitted successfully.',
+    ];
+
+    return response()->json($response);
+});
