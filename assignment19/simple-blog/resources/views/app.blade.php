@@ -17,6 +17,10 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     {{-- Custom CSS --}}
     <link href="{{ asset('css/blog.css') }}" rel="stylesheet" />
+    <!-- Include Moment.js -->
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js') }}"></script>
+    {{-- Axios JS --}}
+    <script src="{{ asset('js/axios.min.js') }}"></script>
 </head>
 
 <body>
@@ -86,8 +90,9 @@
             </li>
         </ul>
     </div>
-    <main class="container">
-        @include('components.navbar')
+    @include('components.navbar')
+    @include('components.loader')
+    <main class="container" id="content-div">
         @yield('content')
     </main>
     @include('components.footer')
