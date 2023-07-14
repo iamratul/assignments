@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostController::class, 'index'])->name('home');
-Route::get('/posts/{id}', [PostController::class, 'show']);
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('post');
 Route::post('/comments', [CommentController::class, 'store']);
 
+Route::get('/users/{id}', [UserController::class, 'show']);
+
 // Ajax Call Routes
+Route::get('/postsData', [PostController::class, 'postsData']);
 Route::get('/postData', [PostController::class, 'postData']);

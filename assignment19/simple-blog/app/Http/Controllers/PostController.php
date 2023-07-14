@@ -15,16 +15,21 @@ class PostController extends Controller
         return view('pages.home', compact('posts', 'categories'));
     }
 
-    public function show($id)
+    public function show($postId)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with('user')->findOrFail($postId);
 
         return view('pages.post', compact('post'));
     }
 
-    public function postData()
+    public function postsData()
     {
-        $posts = Post::with('categories')->get();
+        $posts = Post::with('categories', 'user')->get();
+        return response()->json($posts);
+    }
+
+    function postData(){
+        $posts = Post::with('categories', 'user')->get();
         return response()->json($posts);
     }
 }
