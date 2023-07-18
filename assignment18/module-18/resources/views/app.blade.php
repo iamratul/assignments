@@ -87,7 +87,6 @@
         </ul>
     </div>
     <main class="container">
-
         @include('components.navbar')
         @yield('content')
     </main>

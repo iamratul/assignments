@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Ajax Call Routes
-// Route::get('/postsData', [PostController::class, 'postsData']);
-// Route::get('/postData', [PostController::class, 'postData']);
-// Route::get('/posts/{id}', [PostController::class, 'show'])->name('post');
-// Route::get('/users/{id}', [UserController::class, 'show']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

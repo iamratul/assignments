@@ -5,11 +5,9 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function getCategoryPosts($id)
+    public function index()
     {
-        $category = Category::findOrFail($id);
-        $posts = $category->posts;
-
-        return view('pages.category_posts', compact('category', 'posts'));
+        $categories = Category::all();
+        return view('pages.home', compact('categories'));
     }
 }

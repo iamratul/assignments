@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 @section('content')
     {{-- All post --}}
     <div class="row mb-2">
@@ -6,7 +6,7 @@
             <h1>Featured Post</h1>
         </div>
     </div>
-    <div class="row mb-2" id="blog-post">
+    <div class="row mb-2" id="blog-posts">
         {{-- Single Post --}}
     </div>
     {{-- End All post --}}
@@ -27,12 +27,14 @@
                     let categoryNames = item.categories.length > 0 ? item.categories[0].name : 'No Category';
                     let truncatedContent = truncateText(item['content'],
                         250); // Specify the maximum content length
-                    let postLink = `/posts/${item['id']}`; // Modify this line to generate the correct URL
+                    // let postLink = `/posts/${item['id']}`; // Modify this line to generate the correct URL
+                    // let postLink = "{{ route('post', ['id' => ${item['id']}]) }}";
+                    let postLink = "{{ route('post', ['id' => " + item['id'] + "]) }}";
                     // Fetch the user details for the post
                     let userResponse = await axios.get(`/users/${item.id}`);
                     let user = userResponse.data;
 
-                    document.getElementById('blog-post').innerHTML += (`
+                    document.getElementById('blog-posts').innerHTML += (`
                     <div class="col-md-6">
                         <div class="row g-0 border rounded overflow-hidden mb-4 shadow-sm position-relative">
                             <div class="col-lg-8 p-4 d-flex flex-column position-static">

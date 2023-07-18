@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('home');
-Route::get('/posts/{id}', [PostController::class, 'show'])->name('post');
+Route::get('/', [PostController::class, 'index']);
+// Route::get('/posts/{id}', [PostController::class, 'show'])->name('post');
+Route::get('/posts/{id}', [PostController::class, 'getPost'])->name('post');
 Route::post('/comments', [CommentController::class, 'store']);
 
 Route::get('/users/{id}', [UserController::class, 'show']);
 
 // Ajax Call Routes
 Route::get('/postsData', [PostController::class, 'postsData']);
-Route::get('/postData', [PostController::class, 'postData']);
+Route::get('/postData', [PostController::class, 'getPost']);
