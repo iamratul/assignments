@@ -15,7 +15,7 @@ class TodoController extends Controller
 
     public function index(Request $request)
     {
-        $todos = Todo::where('user_id', $request->userID)->get();
+        $todos = Todo::where('user_id', $request->header('id'))->get();
         return response()->json($todos);
     }
 
@@ -41,7 +41,7 @@ class TodoController extends Controller
     {
         $todo = Todo::find($id);
 
-        if (!$todo || $todo->user_id !== $request->userID) {
+        if (!$todo || $todo->user_id !== $request->header('id')) {
             return response()->json(['message' => 'Todo not found.'], 404);
         }
 
@@ -57,7 +57,7 @@ class TodoController extends Controller
 
         $todo = Todo::find($id);
 
-        if (!$todo || $todo->user_id !== $request->userID) {
+        if (!$todo || $todo->user_id !== $request->header('id')) {
             return response()->json(['message' => 'Todo not found.'], 404);
         }
 
@@ -72,7 +72,7 @@ class TodoController extends Controller
     {
         $todo = Todo::find($id);
 
-        if (!$todo || $todo->user_id !== $request->userID) {
+        if (!$todo || $todo->user_id !== $request->header('id')) {
             return response()->json(['message' => 'Todo not found.'], 404);
         }
 
