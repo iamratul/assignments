@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\TokenVerifyMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +39,7 @@ Route::get('/customer-list', [CustomerController::class, 'CustomerList'])->middl
 Route::post('/update-customer', [CustomerController::class, 'UpdateCustomer'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/delete-customer', [CustomerController::class, 'DeleteCustomer'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/customer-by-id', [CustomerController::class, 'CustomerById'])->middleware([TokenVerifyMiddleware::class]);
+
+// Email API
+Route::get('/send-mail', [EmailController::class, 'sendMail'])->middleware([TokenVerifyMiddleware::class]);
+Route::post('/send-promotional-mail', [EmailController::class, 'sendPromotionalMail'])->middleware([TokenVerifyMiddleware::class]);

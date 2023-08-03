@@ -42,9 +42,8 @@ class UserController extends Controller
             ]);
         } catch (Exception $e) {
             return response()->json([
-                'status' => 'faild',
-                'message' => $e->getMessage(), // for development purpose
-                // 'message' => 'User Registration Failed' // for production purpose
+                'status' => 'failed',
+                'message' => 'User Registration Failed'
             ]);
         }
     }
