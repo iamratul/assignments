@@ -12,17 +12,18 @@ class EmailController extends Controller
 {
     public function sendMail()
     {
-        return view('pages.email.send-mail-page');
+        return view('pages.dashboard.email-page');
     }
-
     public function sendPromotionalMail(Request $request)
     {
         $email = $request->input('email');
         $mailSubject = $request->input('mailSubject');
+        $mailImage = $request->input('mailImage');
         $mailContent = $request->input('mailContent');
+        $mailLink = $request->input('mailLink');
 
         try {
-                Mail::to($email)->send(new SendMail($mailSubject, $mailContent)); // send mail
+                Mail::to($email)->send(new SendMail($mailSubject, $mailImage, $mailContent, $mailLink)); // send mail
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Promotional emails sent successfully.',

@@ -14,15 +14,19 @@ class SendMail extends Mailable
     use Queueable, SerializesModels;
 
     public $mailSubject;
+    public $mailImage;
     public $mailContent;
+    public $mailLink;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($mailSubject, $mailContent)
+    public function __construct($mailSubject, $mailImage, $mailContent, $mailLink)
     {
         $this->mailSubject = $mailSubject;
+        $this->mailImage = $mailImage;
         $this->mailContent = $mailContent;
+        $this->mailLink = $mailLink;
     }
 
     /**

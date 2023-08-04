@@ -69,6 +69,17 @@ class UserController extends Controller
         }
     }
 
+    public function UserProfile(Request $request)
+    {
+        $email = $request->header('email');
+        $user = User::where('email', '=', $email)->first();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Request Successful',
+            'data' => $user,
+        ]);
+    }
+
     public function UserLogout(Request $request)
     {
         return redirect('/login')->cookie('token', '', -1);
