@@ -41,5 +41,4 @@ Route::post('/delete-customer', [CustomerController::class, 'DeleteCustomer'])->
 Route::post('/customer-by-id', [CustomerController::class, 'CustomerById'])->middleware([TokenVerifyMiddleware::class]);
 
 // Email API
-Route::get('/send-mail', [EmailController::class, 'sendMail'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/send-promotional-mail', [EmailController::class, 'sendPromotionalMail'])->middleware([TokenVerifyMiddleware::class]);
