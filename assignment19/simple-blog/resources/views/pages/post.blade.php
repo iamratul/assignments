@@ -14,21 +14,15 @@
     <script>
         getPostData();
         async function getPostData() {
-            try {
-                let url = "{{ route('post', $post->id) }}";
-                let response = await axios.get(url);
-                const post = response.data;
+                let response = await axios.get("/posts/{id}");
 
                 // Render the post data on the page
-                document.getElementById('post-title').innerHTML = post.title;
-                document.getElementById('post-created').innerHTML = moment(post.created_at).format(
+                document.getElementById('post-title').innerHTML = response.data['title'];
+                document.getElementById('post-created').innerHTML = moment(response.data['created_at']).format(
                     'D MMM, YYYY - h:mm a');
-                document.getElementById('post-user').textContent = post.user.name;
-                document.getElementById('post-image').src = post.image;
-                document.getElementById('post-content').innerHTML = post.content;
-            } catch (error) {
-                console.error(error);
-            }
+                // document.getElementById('post-user').textContent = post.user.name;
+                document.getElementById('post-image').src = response.data['image'];
+                document.getElementById('post-content').innerHTML = response.data['content'];
         }
     </script>
 @endsection

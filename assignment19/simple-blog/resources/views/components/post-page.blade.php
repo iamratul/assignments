@@ -10,10 +10,8 @@
 </div>
 
 <script>
-    // const postId = 2;
+    getPostData();
     async function getPostData() {
-        try {
-            // let url = "/posts/2";
             let response = await axios.get('/posts/${postId}');
             const post = response.data;
 
@@ -23,9 +21,5 @@
             document.getElementById('post-user').textContent = `User: ${post.user.name}`;
             document.getElementById('post-image').setAttribute('src', post.image);
             document.getElementById('post-content').textContent = post.content;
-        } catch (error) {
-            alert(error);
-        }
     }
-    getPostData();
 </script>

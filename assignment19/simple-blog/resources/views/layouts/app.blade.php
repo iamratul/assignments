@@ -17,6 +17,8 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     {{-- Custom CSS --}}
     <link href="{{ asset('css/blog.css') }}" rel="stylesheet" />
+
+    <script src="{{ asset('js/jquery-3.7.0.min.js') }}"></script>
     <!-- Include Moment.js -->
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js') }}"></script>
     {{-- Axios JS --}}

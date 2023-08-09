@@ -8,40 +8,24 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function AllPost()
     {
         $posts = Post::with('categories')->get();
         $categories = Category::all();
 
-        return view('pages.home', compact('posts', 'categories'));
+        return view('pages.home');
     }
 
-    public function show($postId)
+    public function getPost(Request $request)
     {
-        $post = Post::with('user')->findOrFail($postId);
+        $post = Post::find($request->id);
 
-        // return view('pages.post', compact('post'));
-        return response()->json($post);
+        return view('pages.post');
     }
 
     public function postsData()
     {
         $posts = Post::with('categories', 'user')->get();
         return response()->json($posts);
-    }
-
-    // function postData(){
-    //     $posts = Post::with('categories', 'user')->get();
-    //     return response()->json($posts);
-    // }
-
-    public function getPost(Request $request)
-    {
-        // $post = Post::find($postId);
-        $post = Post::find($request->id);
-
-        return response()->json($post);
-        // return view('pages.post', compact('post'));
-        // return view('components.post-page', compact('post'));
     }
 }

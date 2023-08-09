@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'AllPost']);
 // Route::get('/posts/{id}', [PostController::class, 'show'])->name('post');
-Route::get('/posts/{id}', [PostController::class, 'getPost'])->name('post');
+Route::get('/posts/{id}', [PostController::class, 'getPost']);
 Route::post('/comments', [CommentController::class, 'store']);
 
 Route::get('/users/{id}', [UserController::class, 'show']);
