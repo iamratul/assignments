@@ -40,7 +40,7 @@ class UserController extends Controller
             $img_url = "uploads/{$img_name}";
 
             $img->move(public_path('uploads'), $img_name);
-            
+
             User::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
@@ -66,7 +66,7 @@ class UserController extends Controller
     {
         $count = User::where('email', $request->input('email'))
             ->where('password', $request->input('password'))
-            ->select('id', 'firstName', 'lastName')->first();
+            ->select('id', 'name', 'image')->first();
         if ($count !== null) {
             $token = JWTToken::CreateToken($request->input('email'), $count->id);
             return response()->json([
@@ -92,6 +92,11 @@ class UserController extends Controller
             'message' => 'Request Successful',
             'data' => $user,
         ]);
+    }
+
+    public function UpdateUserProfile(Request $request)
+    {
+        
     }
 
     public function UserLogout(Request $request)
