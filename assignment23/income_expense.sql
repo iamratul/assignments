@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2023 at 11:40 PM
+-- Generation Time: Aug 11, 2023 at 08:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,6 +52,15 @@ CREATE TABLE `expense_categories` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `expense_categories`
+--
+
+INSERT INTO `expense_categories` (`id`, `name`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'House Rent', 1, '2023-08-10 12:51:56', '2023-08-10 12:51:56'),
+(2, 'Bazar', 1, '2023-08-10 12:52:30', '2023-08-10 12:52:30'),
+(3, 'Bill Payment', 1, '2023-08-10 12:54:24', '2023-08-10 12:54:38');
+
 -- --------------------------------------------------------
 
 --
@@ -69,6 +78,13 @@ CREATE TABLE `incomes` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `incomes`
+--
+
+INSERT INTO `incomes` (`id`, `user_id`, `category_id`, `amount`, `description`, `date`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '11500', 'Added July Month Salary', '2023-08-09', '2023-08-10 23:22:28', '2023-08-11 00:29:21');
+
 -- --------------------------------------------------------
 
 --
@@ -82,6 +98,14 @@ CREATE TABLE `income_categories` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `income_categories`
+--
+
+INSERT INTO `income_categories` (`id`, `name`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Salary', 1, '2023-08-10 11:22:15', '2023-08-10 11:22:15'),
+(2, 'Saling Cloth', 1, '2023-08-10 11:30:13', '2023-08-10 12:31:54');
 
 -- --------------------------------------------------------
 
@@ -220,19 +244,19 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `expense_categories`
 --
 ALTER TABLE `expense_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `incomes`
 --
 ALTER TABLE `incomes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `income_categories`
 --
 ALTER TABLE `income_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
