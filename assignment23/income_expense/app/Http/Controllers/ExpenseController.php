@@ -55,4 +55,11 @@ class ExpenseController extends Controller
         $user_id = $request->header('id');
         return Expense::where('id', $expense_id)->where('user_id', $user_id)->first();
     }
+
+    public function TotalExpense(Request $request)
+    {
+        $user_id = $request->header('id');
+        $totalExpense = Expense::where('user_id', $user_id)->sum('amount');
+        return response()->json(['totalExpense' => $totalExpense]);
+    }
 }

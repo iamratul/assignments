@@ -26,7 +26,7 @@ Route::post('/user-login', [UserController::class, 'UserLogin']);
 Route::get('/logout', [UserController::class, 'UserLogout']);
 
 // Page Route
-Route::get('/login', [UserController::class, 'LoginPage']);
+Route::get('/', [UserController::class, 'LoginPage']);
 Route::get('/registration', [UserController::class, 'RegistrationPage']);
 Route::get('/dashboard', [UserController::class, 'DashboardPage'])->middleware([TokenVerifyMiddleware::class]);
 Route::get('/user-profile-page', [UserController::class, 'ProfilePage'])->middleware([TokenVerifyMiddleware::class]);
@@ -56,6 +56,7 @@ Route::post('/create-income', [IncomeController::class, 'CreateIncome'])->middle
 Route::post('/update-income', [IncomeController::class, 'UpdateIncome'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/delete-income', [IncomeController::class, 'DeleteIncome'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/income-by-id', [IncomeController::class, 'IncomeById'])->middleware([TokenVerifyMiddleware::class]);
+Route::get('/total-income', [IncomeController::class, 'TotalIncome'])->middleware([TokenVerifyMiddleware::class]);
 
 // Expense API
 Route::get('/expense', [ExpenseController::class, 'ExpensePage'])->middleware([TokenVerifyMiddleware::class]);
@@ -64,3 +65,4 @@ Route::post('/create-expense', [ExpenseController::class, 'CreateExpense'])->mid
 Route::post('/update-expense', [ExpenseController::class, 'UpdateExpense'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/delete-expense', [ExpenseController::class, 'DeleteExpense'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/expense-by-id', [ExpenseController::class, 'ExpenseById'])->middleware([TokenVerifyMiddleware::class]);
+Route::get('/total-expense', [ExpenseController::class, 'TotalExpense'])->middleware([TokenVerifyMiddleware::class]);

@@ -71,7 +71,6 @@
             let id = $(this).data('id');
             await FillUpUpdateForm(id)
             $("#update-modal").modal('show');
-            //    $("#updateID").val(id);
         })
 
         $('.deleteBtn').on('click', function() {

@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-9 col-lg-8 col-md-8 col-sm-9">
                             <div>
-                                <h3 class="mb-0 text-capitalize font-weight-bold">01</h3>
+                                <h3 class="mb-0 text-capitalize font-weight-bold" id="totalIncome"></h3>
                                 <p class="mb-0 text-sm">Total Income</p>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-9 col-lg-8 col-md-8 col-sm-9">
                             <div>
-                                <h3 class="mb-0 text-capitalize font-weight-bold">01</h3>
+                                <h3 class="mb-0 text-capitalize font-weight-bold" id="totalExpense"></h3>
                                 <p class="mb-0 text-sm">Total Expense</p>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="col-9 col-lg-8 col-md-8 col-sm-9">
                             <div>
-                                <h3 class="mb-0 text-capitalize font-weight-bold">01</h3>
+                                <h3 class="mb-0 text-capitalize font-weight-bold" id="balance"></h3>
                                 <p class="mb-0 text-sm">Balance</p>
                             </div>
                         </div>
@@ -62,3 +62,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    displayTotal();
+    async function displayTotal() {
+        const resIncome = await axios.get("/total-income");
+        const resExpense = await axios.get("/total-expense");
+
+        const totalIncome = resIncome.data.totalIncome || 0;
+        const totalExpense = resExpense.data.totalExpense || 0;
+        const balance = totalIncome - totalExpense;
+
+        document.getElementById("totalIncome").textContent = totalIncome;
+        document.getElementById("totalExpense").textContent = totalExpense;
+        document.getElementById("balance").textContent = balance;
+    }
+</script>

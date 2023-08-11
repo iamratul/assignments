@@ -55,4 +55,11 @@ class IncomeController extends Controller
         $user_id = $request->header('id');
         return Income::where('id', $income_id)->where('user_id', $user_id)->first();
     }
+
+    public function TotalIncome(Request $request)
+    {
+        $user_id = $request->header('id');
+        $totalIncome = Income::where('user_id', $user_id)->sum('amount');
+        return response()->json(['totalIncome' => $totalIncome]);
+    }
 }

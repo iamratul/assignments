@@ -45,7 +45,7 @@
                                 <span class="float-end">Have a Account?</span>
                             </div>
                             <div class="col-md-2 p-2">
-                                <a class="text-center w-100 btn btn-primary" href="{{ url('/login') }}">Sign In</a>
+                                <a class="text-center w-100 btn btn-primary" href="{{ url('/') }}">Sign In</a>
                             </div>
                         </div>
                     </div>

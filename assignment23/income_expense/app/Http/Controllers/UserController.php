@@ -101,6 +101,6 @@ class UserController extends Controller
 
     public function UserLogout(Request $request)
     {
-        return redirect('/login')->cookie('token', '', -1);
+        return redirect('/')->cookie('token', '', -1);
     }
 }

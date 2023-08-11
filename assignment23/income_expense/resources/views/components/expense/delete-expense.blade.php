@@ -8,10 +8,10 @@
             </div>
             <div class="modal-footer justify-content-end">
                 <div>
-                    <button type="button" id="delete-modal-close" class="btn shadow-sm btn-secondary"
+                    <button type="button" id="delete-modal-close" class="shadow-sm btn btn-secondary"
                         data-bs-dismiss="modal">Cancel</button>
                     <button onclick="itemDelete()" type="button" id="confirmDelete"
-                        class="btn shadow-sm btn-danger">Delete</button>
+                        class="shadow-sm btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
@@ -23,15 +23,15 @@
         let id = document.getElementById('deleteID').value;
         document.getElementById('delete-modal-close').click();
         showLoader();
-        let res = await axios.post("/delete-income", {
+        let res = await axios.post("/delete-expense", {
             id: id
         })
         hideLoader();
         if (res.data === 1) {
-            successToast("Income Deleted Successfully");
+            successToast("Expense Deleted Successfully");
             await getList();
         } else {
-            errorToast("Income Delete Failed !")
+            errorToast("Expense Delete Failed !")
         }
     }
 </script>
