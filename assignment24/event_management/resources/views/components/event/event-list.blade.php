@@ -4,11 +4,11 @@
             <div class="card px-5 py-5 shadow">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Income</h4>
+                        <h4>Events</h4>
                     </div>
                     <div class="align-items-center col">
                         <button data-bs-toggle="modal" data-bs-target="#create-modal"
-                            class="float-end m-0 btn btn-primary">Create Income</button>
+                            class="float-end m-0 btn btn-primary">Create Event</button>
                     </div>
                 </div>
                 <hr class="bg-dark " />
@@ -22,30 +22,6 @@
                             <!-- Populate options dynamically using JavaScript -->
                         </select>
                     </div>
-                    {{-- <div class="col-md-4">
-                        <label for="filterDateRange" class="form-label">Filter by Date Range</label>
-                        <input type="date" id="filterDateRange" class="form-control">
-                    </div> --}}
-
-                    <div class="col-md-3">
-                        <label for="filterFromDate" class="form-label">From Date</label>
-                        <input type="date" id="filterFromDate" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="filterToDate" class="form-label">To Date</label>
-                        <input type="date" id="filterToDate" class="form-control">
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="sortOption" class="form-label">Sort</label>
-                        <select id="sortOption" class="form-select">
-                            {{-- <option value="">Select</option> --}}
-                            <option value="date-asc">Date (Ascending)</option>
-                            <option value="date-desc">Date (Descending)</option>
-                            <option value="amount-asc">Amount (Ascending)</option>
-                            <option value="amount-desc">Amount (Descending)</option>
-                        </select>
-                    </div>
                 </div>
 
                 <table class="table" id="tableData">
@@ -53,9 +29,11 @@
                         <tr class="bg-light">
                             <th>SL No</th>
                             <th>Category</th>
-                            <th>Amount</th>
-                            <th>Description</th>
+                            <th>Title</th>
                             <th>Date</th>
+                            <th>Time</th>
+                            <th>Location</th>
+                            <th>Total Seat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -70,14 +48,11 @@
 
 <script>
     // Attach event listeners to filter and sort options
-    // $('#filterCategory, #filterFromDate, #filterToDate, #sortOption').change(getList);
     $('#filterCategory').change(getList);
-    $('#filterFromDate, #filterToDate').change(getList);
-    $('#sortOption').change(getList);
 
     FillCategoryDropDown();
     async function FillCategoryDropDown() {
-        let res = await axios.get("/income-category-list")
+        let res = await axios.get("/event-category-list")
         res.data.forEach(function(item, i) {
             let option = `<option value="${item['id']}">${item['name']}</option>`
             $("#filterCategory").append(option);
@@ -88,25 +63,19 @@
 
     async function getList() {
         const filterCategory = $('#filterCategory').val();
-        const filterFromDate = $('#filterFromDate').val(); // Get the selected "from" date
-        const filterToDate = $('#filterToDate').val(); // Get the selected "to" date
-        const sortOption = $('#sortOption').val();
 
-        if (!filterCategory && !filterFromDate && !filterToDate && !(sortOption === "")) {
+        if (filterCategory === "") {
             // Show all income data by default
             showLoader();
-            let res = await axios.get("/income-list");
+            let res = await axios.get("/event-list");
             hideLoader();
             await updateTableData(res.data);
         } else {
             // General filtering
             showLoader();
-            let res = await axios.get("/income-list", {
+            let res = await axios.get("/event-list", {
                 params: {
-                    category: filterCategory,
-                    fromDate: filterFromDate,
-                    toDate: filterToDate,
-                    sort: sortOption
+                    category: filterCategory
                 }
             });
             hideLoader();
@@ -118,7 +87,7 @@
         let tableList = $("#tableList");
         let tableData = $("#tableData");
 
-        tableData.DataTable().clear().destroy();
+        tableData.DataTable().destroy();
         tableList.empty();
 
         data.forEach(async function(item, index) {
@@ -130,15 +99,24 @@
             let row = `<tr>
                     <td>${index + 1}</td>
                     <td>${item['category']['name']}</td>
-                    <td>${item['amount']}</td>
-                    <td>${item['description']}</td>
+                    <td>${item['title']}</td>
                     <td>${formattedDate}</td>
+                    <td>${item['time']}</td>
+                    <td>${item['location']}</td>
+                    <td>${item['seat']}</td>
                     <td>
-                        <button data-id="${item['id']}" class="editBtn btn btn-sm btn-outline-success">Edit</button>
+                        <button data-id="${item['id']}" class="viewBtn btn btn-sm btn-outline-success">View</button>
+                        <button data-id="${item['id']}" class="editBtn btn btn-sm btn-outline-primary">Edit</button>
                         <button data-id="${item['id']}" class="deleteBtn btn btn-sm btn-outline-danger">Delete</button>
                     </td>
                  </tr>`;
             tableList.append(row);
+        });
+
+        $('.viewBtn').on('click', async function() {
+            let id = $(this).data('id');
+            await FillUpViewForm(id);
+            $("#view-modal").modal('show');
         });
 
         $('.editBtn').on('click', async function() {

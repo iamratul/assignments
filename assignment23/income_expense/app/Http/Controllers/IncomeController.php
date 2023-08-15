@@ -20,14 +20,37 @@ class IncomeController extends Controller
             'category_id' => $request->input('category_id'),
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
-            'date' => $request->input('date')
+            'date' => $request->input('date'),
         ]);
     }
 
     public function IncomeList(Request $request)
     {
         $user_id = $request->header('id');
-        return Income::with('category')->where('user_id', $user_id)->get();
+        // return Income::with('category')->where('user_id', $user_id)->get();
+
+        $query = Income::with('category')->where('user_id', $user_id);
+
+        // Apply filters
+        if ($request->has('category')) {
+            $query->where('category_id', $request->input('category'));
+        }
+
+        if ($request->has('fromDate') && $request->has('toDate')) {
+            $fromDate = $request->input('fromDate');
+            $toDate = $request->input('toDate');
+            $query->whereBetween('date', [$fromDate, $toDate]);
+        }
+
+        // Apply sorting
+        if ($request->has('sort')) {
+            list($sortColumn, $sortDirection) = explode('-', $request->input('sort'));
+            $query->orderBy($sortColumn, $sortDirection);
+        }
+
+        $data = $query->get();
+
+        return response()->json($data);
     }
 
     public function UpdateIncome(Request $request)

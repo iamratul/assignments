@@ -18,7 +18,7 @@
                     <div class="col-md-3">
                         <label for="filterCategory" class="form-label">Filter by Category</label>
                         <select id="filterCategory" class="form-select">
-                            <option value="">Select</option>
+                            <option value="">All</option>
                             <!-- Populate options dynamically using JavaScript -->
                         </select>
                     </div>
@@ -39,7 +39,6 @@
                     <div class="col-md-3">
                         <label for="sortOption" class="form-label">Sort</label>
                         <select id="sortOption" class="form-select">
-                            {{-- <option value="">Select</option> --}}
                             <option value="date-asc">Date (Ascending)</option>
                             <option value="date-desc">Date (Descending)</option>
                             <option value="amount-asc">Amount (Ascending)</option>
@@ -69,7 +68,9 @@
 </div>
 
 <script>
+    
     // Attach event listeners to filter and sort options
+    // $('#filterCategory, #filterDateRange, #sortOption').change(getList);
     // $('#filterCategory, #filterFromDate, #filterToDate, #sortOption').change(getList);
     $('#filterCategory').change(getList);
     $('#filterFromDate, #filterToDate').change(getList);
@@ -85,50 +86,32 @@
     }
 
     getList();
-
     async function getList() {
         const filterCategory = $('#filterCategory').val();
+        // const filterDateRange = $('#filterDateRange').val();
         const filterFromDate = $('#filterFromDate').val(); // Get the selected "from" date
         const filterToDate = $('#filterToDate').val(); // Get the selected "to" date
         const sortOption = $('#sortOption').val();
 
-        if (!filterCategory && !filterFromDate && !filterToDate && !(sortOption === "")) {
-            // Show all income data by default
+        if (!filterCategory && !filterFromDate && !filterToDate && !sortOption == "") {
             showLoader();
             let res = await axios.get("/income-list");
             hideLoader();
-            await updateTableData(res.data);
-        } else {
-            // General filtering
-            showLoader();
-            let res = await axios.get("/income-list", {
-                params: {
-                    category: filterCategory,
-                    fromDate: filterFromDate,
-                    toDate: filterToDate,
-                    sort: sortOption
-                }
-            });
-            hideLoader();
-            await updateTableData(res.data);
-        }
-    }
 
-    async function updateTableData(data) {
-        let tableList = $("#tableList");
-        let tableData = $("#tableData");
+            let tableList = $("#tableList");
+            let tableData = $("#tableData");
 
-        tableData.DataTable().clear().destroy();
-        tableList.empty();
+            tableData.DataTable().destroy();
+            tableList.empty();
 
-        data.forEach(async function(item, index) {
-            const formattedDate = new Date(item['date']).toLocaleDateString('en-GB', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-            let row = `<tr>
-                    <td>${index + 1}</td>
+            res.data.forEach(function(item, index) {
+                const formattedDate = new Date(item['date']).toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+                let row = `<tr>
+                    <td>${index+1}</td>
                     <td>${item['category']['name']}</td>
                     <td>${item['amount']}</td>
                     <td>${item['description']}</td>
@@ -137,24 +120,79 @@
                         <button data-id="${item['id']}" class="editBtn btn btn-sm btn-outline-success">Edit</button>
                         <button data-id="${item['id']}" class="deleteBtn btn btn-sm btn-outline-danger">Delete</button>
                     </td>
-                 </tr>`;
-            tableList.append(row);
-        });
+                 </tr>`
+                tableList.append(row)
+            })
 
-        $('.editBtn').on('click', async function() {
-            let id = $(this).data('id');
-            await FillUpUpdateForm(id);
-            $("#update-modal").modal('show');
-        });
+            $('.editBtn').on('click', async function() {
+                let id = $(this).data('id');
+                await FillUpUpdateForm(id)
+                $("#update-modal").modal('show');
+            })
 
-        $('.deleteBtn').on('click', function() {
-            let id = $(this).data('id');
-            $("#delete-modal").modal('show');
-            $("#deleteID").val(id);
-        });
+            $('.deleteBtn').on('click', function() {
+                let id = $(this).data('id');
+                $("#delete-modal").modal('show');
+                $("#deleteID").val(id);
+            })
 
-        new DataTable('#tableData', {
-            lengthMenu: [5, 10, 15, 20, 30]
-        });
+            new DataTable('#tableData', {
+                lengthMenu: [5, 10, 15, 20, 30]
+            });
+        } else {
+            showLoader();
+            let res = await axios.get("/income-list", {
+                params: {
+                    category: filterCategory,
+                    // dateRange: filterDateRange,
+                    fromDate: filterFromDate,
+                    toDate: filterToDate,
+                    sort: sortOption
+                }
+            });
+            hideLoader();
+
+            let tableList = $("#tableList");
+            let tableData = $("#tableData");
+
+            tableData.DataTable().destroy();
+            tableList.empty();
+
+            res.data.forEach(function(item, index) {
+                const formattedDate = new Date(item['date']).toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+                let row = `<tr>
+                    <td>${index+1}</td>
+                    <td>${item['category']['name']}</td>
+                    <td>${item['amount']}</td>
+                    <td>${item['description']}</td>
+                    <td>${formattedDate}</td>
+                    <td>
+                        <button data-id="${item['id']}" class="editBtn btn btn-sm btn-outline-success">Edit</button>
+                        <button data-id="${item['id']}" class="deleteBtn btn btn-sm btn-outline-danger">Delete</button>
+                    </td>
+                 </tr>`
+                tableList.append(row)
+            })
+
+            $('.editBtn').on('click', async function() {
+                let id = $(this).data('id');
+                await FillUpUpdateForm(id)
+                $("#update-modal").modal('show');
+            })
+
+            $('.deleteBtn').on('click', function() {
+                let id = $(this).data('id');
+                $("#delete-modal").modal('show');
+                $("#deleteID").val(id);
+            })
+
+            new DataTable('#tableData', {
+                lengthMenu: [5, 10, 15, 20, 30]
+            });
+        }
     }
 </script>
