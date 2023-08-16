@@ -18,14 +18,10 @@
                     <div class="col-md-3">
                         <label for="filterCategory" class="form-label">Filter by Category</label>
                         <select id="filterCategory" class="form-select">
-                            <option value="">Select</option>
+                            <option value="">All</option>
                             <!-- Populate options dynamically using JavaScript -->
                         </select>
                     </div>
-                    {{-- <div class="col-md-4">
-                        <label for="filterDateRange" class="form-label">Filter by Date Range</label>
-                        <input type="date" id="filterDateRange" class="form-control">
-                    </div> --}}
 
                     <div class="col-md-3">
                         <label for="filterFromDate" class="form-label">From Date</label>
@@ -92,7 +88,7 @@
         const filterToDate = $('#filterToDate').val(); // Get the selected "to" date
         const sortOption = $('#sortOption').val();
 
-        if (!filterCategory && !filterFromDate && !filterToDate && !(sortOption === "")) {
+        if (filterCategory && filterFromDate && filterToDate === "") {
             // Show all income data by default
             showLoader();
             let res = await axios.get("/income-list");

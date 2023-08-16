@@ -43,7 +43,6 @@ Route::post('/event-category-by-id', [EventCategoryController::class, 'EventCate
 Route::get('/events', [EventController::class, 'EventPage'])->middleware([TokenVerifyMiddleware::class]);
 Route::get('/event-list', [EventController::class, 'EventList'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/create-event', [EventController::class, 'CreateEvent'])->middleware([TokenVerifyMiddleware::class]);
-Route::get('/event-details', [EventController::class, 'EventDetails'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/update-event', [EventController::class, 'UpdateEvent'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/delete-event', [EventController::class, 'DeleteEvent'])->middleware([TokenVerifyMiddleware::class]);
 Route::post('/event-by-id', [EventController::class, 'EventById'])->middleware([TokenVerifyMiddleware::class]);

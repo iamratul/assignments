@@ -27,8 +27,6 @@ class IncomeController extends Controller
     public function IncomeList(Request $request)
     {
         $user_id = $request->header('id');
-        // return Income::with('category')->where('user_id', $user_id)->get();
-
         $query = Income::with('category')->where('user_id', $user_id);
 
         // Apply filters
@@ -49,7 +47,6 @@ class IncomeController extends Controller
         }
 
         $data = $query->get();
-
         return response()->json($data);
     }
 

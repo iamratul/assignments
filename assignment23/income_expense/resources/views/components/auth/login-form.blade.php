@@ -1,9 +1,10 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-7 animated fadeIn col-lg-6 center-screen">
-            <div class="card w-90  p-4">
+        <div class="col-md-6 animated fadeIn col-lg-6 center-screen">
+            <div class="card w-90 p-4 shadow">
                 <div class="card-body">
-                    <h4 class="text-center">User Login</h4>
+                    <img class="login-page-img d-flex mx-auto mb-3" src="{{ asset('images/user.webp') }}" alt="" />
+                    <h4 class="text-center text-uppercase fw-normal">User Login</h4>
                     <br />
                     <input id="email" placeholder="User Email" class="form-control" type="email" />
                     <br />

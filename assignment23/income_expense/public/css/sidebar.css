@@ -14,12 +14,15 @@
     color: #363B64;
     background:  rgba(0, 0, 0, 0.16);
 }
-.icon-nav-img{
-    cursor: pointer;
+.icon-nav-img, .login-page-img {
     border-radius: 50%;
     width: 35px ;
     height: 35px ;
     object-fit: cover;
+}
+.login-page-img {
+    width: 85px;
+    height: 85px;
 }
 .icon-nav-img-lg{
     border-radius: 50%;

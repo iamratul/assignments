@@ -99,7 +99,7 @@
                     window.location.href = '/';
                 }, 2000)
             } else {
-                errorToast(res.data['message'])
+                errorToast(res.data['message']);
             }
         }
     }
