@@ -52,5 +52,8 @@ Route::get('/admin/edit-leave-category', [LeaveCategoryController::class, 'EditL
 Route::post('/admin/delete-leave-category', [LeaveCategoryController::class, 'DeleteLeaveCategory'])->middleware([TokenVerifyMiddleware::class . ':admin']);
 
 // Leave Request List api
-Route::get('/admin/leave-request', [LeaveRequestController::class, 'LeaveRequest'])->middleware([TokenVerifyMiddleware::class . ':admin']);
-Route::get('/admin/leave-request-list', [LeaveRequestController::class, 'LeaveRequestList'])->middleware([TokenVerifyMiddleware::class . ':admin']);
+Route::get('/admin/leave-request', [LeaveController::class, 'LeaveRequestPage'])->middleware([TokenVerifyMiddleware::class . ':admin']);
+Route::get('/admin/leave-request-list', [LeaveController::class, 'AdminLeaveRequestList'])->middleware([TokenVerifyMiddleware::class . ':admin']);
+Route::post('/leave-request-by-id', [LeaveController::class, 'LeaveRequestById'])->middleware([TokenVerifyMiddleware::class . ':admin']);
+Route::post('/admin/update-leave-request', [LeaveController::class, 'UpdateLeaveRequest'])->middleware([TokenVerifyMiddleware::class . ':admin']);
+Route::post('/admin/delete-leave-request', [LeaveController::class, 'DeleteLeaveRequest'])->middleware([TokenVerifyMiddleware::class . ':admin']);

@@ -78,12 +78,12 @@
             });
             hideLoader();
 
-            if (res.status === 201 && res.data['status'] === 'success') {
-                successToast(res.data['message']);
+            if (res.status === 201) {
+                successToast('Leave request created successfully');
                 document.getElementById('save-form').reset();
                 await getList();
             } else {
-                errorToast(res.data['message']);
+                errorToast('Leave request not created');
             }
         }
     }

@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <!-- start leave request -->
     <div class="row">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card px-5 py-5 shadow">
@@ -21,6 +22,7 @@
                             <th>End Date</th>
                             <th>Reason</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="tableList">
@@ -31,14 +33,14 @@
         </div>
     </div>
 </div>
-
+<!-- end leave request -->
 <script>
     getList();
 
     async function getList() {
 
         showLoader();
-        let res = await axios.get("/employee/leave-request-list");
+        let res = await axios.get("/admin/leave-request-list");
         hideLoader();
 
         let tableList = $("#tableList");
@@ -65,9 +67,25 @@
                     <td>${endDate}</td>
                     <td>${item['reason']}</td>
                     <td>${item['status']}</td>
+                    <td>
+                        <button data-id="${item['id']}" class="editBtn btn btn-sm btn-outline-success">Edit</button>
+                        <button data-id="${item['id']}" class="deleteBtn btn btn-sm btn-outline-danger">Delete</button>
+                    </td>
                  </tr>`
             tableList.append(row)
-        })
+        });
+
+        $('.editBtn').on('click', async function() {
+            let id = $(this).data('id');
+            await FillUpUpdateForm(id);
+            $("#update-modal").modal('show');
+        });
+
+        $('.deleteBtn').on('click', function() {
+            let id = $(this).data('id');
+            $("#delete-modal").modal('show');
+            $("#deleteID").val(id);
+        });
 
         new DataTable('#tableData', {
             lengthMenu: [10, 15, 20, 30]
